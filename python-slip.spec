@@ -1,9 +1,7 @@
-# TODO
-# - fix bashism: sh: >&/dev/null : illegal file descriptor name
 Summary:	Miscellaneous convenience, extension and workaround code for Python
 Name:		python-slip
 Version:	0.2.20
-Release:	2.3
+Release:	3
 License:	GPL v2+
 Group:		Development/Languages/Python
 URL:		http://fedorahosted.org/python-slip
