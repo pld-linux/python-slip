@@ -1,17 +1,18 @@
 Summary:	Miscellaneous convenience, extension and workaround code for Python
 Summary(pl.UTF-8):	Kod różnych udogodnień, rozszerzeń i obejść dla Pythona
 Name:		python-slip
-Version:	0.2.20
-Release:	3
+Version:	0.6.0
+Release:	1
 License:	GPL v2+
 Group:		Development/Languages/Python
 Source0:	https://fedorahosted.org/released/python-slip/%{name}-%{version}.tar.bz2
-# Source0-md5:	4e0267cbeb2cb1666c5930bd7c7acfb4
+# Source0-md5:	fb3299d75af1a67ca6679d96ce839da6
 URL:		https://fedorahosted.org/python-slip/
 BuildRequires:	python >= 2
 BuildRequires:	rpmbuild(macros) >= 1.219
 BuildRequires:	python-devel >= 2
 Requires:	python-selinux
+Requires:	python-six
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -32,11 +33,13 @@ Summary:	Convenience functions for dbus services
 Summary(pl.UTF-8):	Wygodne funkcje dla usług dbus
 Group:		Libraries
 Requires:	%{name} = %{version}-%{release}
-Requires:	polkit >= 0.94
+Suggests:	polkit >= 0.94
 Requires:	python-dbus >= 0.80
 Requires:	python-decorator
 Requires:	python-pygobject >= 2
+Requires:	python-six
 Conflicts:	PolicyKit < 0.8-3
+Conflicts:	polkit < 0.94
 
 %description dbus
 The Simple Library for Python packages contain miscellaneous code for
@@ -104,6 +107,7 @@ rm -rf $RPM_BUILD_ROOT
 %doc AUTHORS
 %dir %{py_sitescriptdir}/slip
 %{py_sitescriptdir}/slip/__init__.py[co]
+%{py_sitescriptdir}/slip/_wrappers
 %{py_sitescriptdir}/slip/util
 %{py_sitescriptdir}/slip-%{version}-py%{python_version}.egg-info
 
