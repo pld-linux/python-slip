@@ -7,7 +7,7 @@ Summary:	Miscellaneous convenience, extension and workaround code for Python 2
 Summary(pl.UTF-8):	Kod różnych udogodnień, rozszerzeń i obejść dla Pythona 2
 Name:		python-slip
 Version:	0.6.0
-Release:	1
+Release:	2
 License:	GPL v2+
 Group:		Development/Languages/Python
 Source0:	https://fedorahosted.org/released/python-slip/%{name}-%{version}.tar.bz2
@@ -222,7 +222,7 @@ rm -rf $RPM_BUILD_ROOT
 %files -n python3-slip
 %defattr(644,root,root,755)
 %doc AUTHORS
-%dir %{py_sitescriptdir}/slip
+%dir %{py3_sitescriptdir}/slip
 %{py3_sitescriptdir}/slip/__init__.py
 %{py3_sitescriptdir}/slip/__pycache__
 %{py3_sitescriptdir}/slip/_wrappers
