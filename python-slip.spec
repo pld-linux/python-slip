@@ -21,7 +21,7 @@ BuildRequires:	python-devel >= 2
 BuildRequires:	python3 >= 3.2
 BuildRequires:	python3-modules >= 3.2
 %endif
-BuildRequires:	rpmbuild(macros) >= 1.612
+BuildRequires:	rpmbuild(macros) >= 1.710
 Requires:	python-selinux
 Requires:	python-six
 BuildArch:	noarch
