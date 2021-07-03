@@ -1,0 +1,57 @@
+--- python-slip-0.6.5/slip/dbus/polkit.py.orig	2017-05-16 12:14:36.000000000 +0200
++++ python-slip-0.6.5/slip/dbus/polkit.py	2021-07-03 19:34:39.676622157 +0200
+@@ -26,7 +26,7 @@
+ 
+ from __future__ import absolute_import
+ 
+-import collections
++from six.moves import collections_abc
+ import dbus
+ from decorator import decorator
+ from functools import reduce
+@@ -103,14 +103,14 @@
+             def some_method(self, ...):
+                 ..."""
+ 
+-    assert(func is None or isinstance(func, collections.Callable))
++    assert(func is None or isinstance(func, collections_abc.Callable))
+ 
+     assert(
+         authfail_result in (None, AUTHFAIL_DONTCATCH) or
+         authfail_exception is None)
+     assert(
+         authfail_callback is None or
+-        isinstance(authfail_callback, collections.Callable))
++        isinstance(authfail_callback, collections_abc.Callable))
+     assert(
+         authfail_exception is None or
+         issubclass(authfail_exception, Exception))
+--- python-slip-0.6.5/slip/util/hookable.py.orig	2017-05-16 12:14:36.000000000 +0200
++++ python-slip-0.6.5/slip/util/hookable.py	2021-07-03 19:35:20.166402805 +0200
+@@ -23,7 +23,7 @@
+ """This module contains variants of certain base types which call registered
+ hooks on changes."""
+ 
+-import collections
++from six.moves import collections_abc
+ from six import with_metaclass
+ 
+ __all__ = ["Hookable", "HookableSet"]
+@@ -67,7 +67,7 @@
+ 
+     def __init__(self, hook, args, kwargs, hookable=None):
+ 
+-        assert(isinstance(hook, collections.Callable))
++        assert(isinstance(hook, collections_abc.Callable))
+         assert(isinstance(hookable, Hookable))
+ 
+         for n, x in enumerate(args):
+@@ -174,7 +174,7 @@
+         self.__add_hook(hook, self, *args, **kwargs)
+ 
+     def __add_hook(self, hook, _hookable, *args, **kwargs):
+-        assert isinstance(hook, collections.Callable)
++        assert isinstance(hook, collections_abc.Callable)
+         assert isinstance(_hookable, Hookable)
+         hookentry = _HookEntry(hook, args, kwargs, hookable=_hookable)
+         self.__hooks__.add(hookentry)

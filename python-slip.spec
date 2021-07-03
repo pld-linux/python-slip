@@ -6,13 +6,15 @@
 Summary:	Miscellaneous convenience, extension and workaround code for Python 2
 Summary(pl.UTF-8):	Kod różnych udogodnień, rozszerzeń i obejść dla Pythona 2
 Name:		python-slip
-Version:	0.6.0
-Release:	10
+Version:	0.6.5
+Release:	1
 License:	GPL v2+
 Group:		Development/Languages/Python
-Source0:	https://fedorahosted.org/released/python-slip/%{name}-%{version}.tar.bz2
-# Source0-md5:	fb3299d75af1a67ca6679d96ce839da6
-URL:		https://fedorahosted.org/python-slip/
+#Source0Download: https://github.com/nphilipp/python-slip/releases
+Source0:	https://github.com/nphilipp/python-slip/releases/download/%{name}-%{version}/%{name}-%{version}.tar.bz2
+# Source0-md5:	28ae5f93853466c44ec96706ba2a1eb4
+Patch0:		%{name}-collections_abc.patch
+URL:		https://github.com/nphilipp/python-slip
 %if %{with python2}
 BuildRequires:	python >= 2
 BuildRequires:	python-devel >= 2
@@ -21,9 +23,9 @@ BuildRequires:	python-devel >= 2
 BuildRequires:	python3 >= 1:3.2
 BuildRequires:	python3-modules >= 1:3.2
 %endif
-BuildRequires:	rpmbuild(macros) >= 1.710
+BuildRequires:	rpmbuild(macros) >= 1.714
 Requires:	python-selinux
-Requires:	python-six
+Requires:	python-six >= 1.13.0
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -49,7 +51,7 @@ Requires:	python-dbus >= 0.80
 Requires:	python-decorator
 # pygobject2 or pygobject3 actually (using slip._wrapper._gobject)
 Requires:	python-pygobject >= 2
-Requires:	python-six
+Requires:	python-six >= 1.13.0
 Suggests:	polkit >= 0.94
 Conflicts:	PolicyKit < 0.8-3
 Conflicts:	polkit < 0.94
@@ -122,7 +124,7 @@ Group:		Libraries
 Requires:	python3-dbus >= 0.80
 Requires:	python3-decorator
 Requires:	python3-pygobject3 >= 3
-Requires:	python3-six
+Requires:	python3-six >= 1.13.0
 Requires:	python3-slip = %{version}-%{release}
 Suggests:	polkit >= 0.94
 Conflicts:	PolicyKit < 0.8-3
@@ -150,6 +152,7 @@ PolicyKit.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 %{__make} $(pwd)/setup.py
