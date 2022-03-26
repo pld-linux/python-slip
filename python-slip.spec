@@ -7,7 +7,7 @@ Summary:	Miscellaneous convenience, extension and workaround code for Python 2
 Summary(pl.UTF-8):	Kod różnych udogodnień, rozszerzeń i obejść dla Pythona 2
 Name:		python-slip
 Version:	0.6.5
-Release:	2
+Release:	3
 License:	GPL v2+
 Group:		Development/Languages/Python
 #Source0Download: https://github.com/nphilipp/python-slip/releases
